@@ -1,4 +1,7 @@
 package fr.diginamic.enumerations;
+
+import java.util.Locale;
+
 /**
  * Représente une saison et fournit les 4 instances de saisons.
  * 
@@ -33,13 +36,13 @@ public enum Saison {
 	 * @return {@link Saison}
 	 */
 	public static Saison valueOfLibelle(String libelle) {
+		if (libelle == null){
+			return null;
+		}
 		Saison[] saisons = Saison.values();
 		for (Saison saison : saisons) {
-			if (libelle.equals(saison.getLibelle())) {
+			if (libelle.toLowerCase().replace("é","e").equals(saison.getLibelle().toLowerCase().replace("é","e"))) {
 				return saison;
-			}
-			else {
-				return null;
 			}
 		}
 		return null;
